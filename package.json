@@ -1,0 +1,41 @@
+{
+    "name": "aversysbe",
+    "version": "1.0.0",
+    "description": "Aversys server side app",
+    "main": "main.ts",
+    "scripts": {
+        "db:update": "npx prisma generate && npx prisma migrate dev",
+        "dev": "nodemon",
+        "start": "node ./dist/src/main.js",
+        "build": "tsc && node ./dist/src/main.js",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "all": "npm i && docker-compose up -d --build && npm run db:update && npm run dev"
+    },
+    "author": "Vitaly Tochenyy",
+    "license": "ISC",
+    "dependencies": {
+        "@prisma/client": "^4.8.0",
+        "@types/connect-timeout": "^0.0.36",
+        "@types/cors": "^2.8.12",
+        "@types/express": "^4.17.14",
+        "@types/lodash": "^4.14.191",
+        "@types/uuid": "^8.3.4",
+        "class-transformer": "^0.5.1",
+        "class-validator": "^0.14.0",
+        "connect-timeout": "^1.9.0",
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.3",
+        "express": "^4.18.2",
+        "inversify": "^6.0.1",
+        "lodash": "^4.17.21",
+        "moment": "^2.29.4",
+        "nodemon": "^2.0.20",
+        "prettier": "^2.8.1",
+        "prisma": "^4.8.0",
+        "reflect-metadata": "^0.1.13",
+        "ts-node": "^10.9.1",
+        "tslog": "^3.3.4",
+        "typescript": "^4.8.4",
+        "uuid": "^8.3.2"
+    }
+}

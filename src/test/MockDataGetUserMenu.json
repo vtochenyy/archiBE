@@ -1,0 +1,178 @@
+{
+    "status": 200,
+    "data": [
+        {
+            "menu": {
+                "typeOfFoodIntakeItems": [
+                    {
+                        "typeOfFoodIntakeId": "95c14890-d91b-11ed-9a9d-0d0baf15e66f",
+                        "typeOfDishItems": [
+                            {
+                                "typeOfDishItemId": "61bfd660-d91b-11ed-9a9d-0d0baf15e66f",
+                                "dishes": [
+                                    {
+                                        "id": "c93352c0-d96d-11ed-a47c-797277349d21",
+                                        "name": "Отбивная из птицы в сухарях",
+                                        "weight": "220г",
+                                        "protein": 20,
+                                        "fats": 20,
+                                        "carbohydrates": 20,
+                                        "calories": 20,
+                                        "dieta": ["Нет"],
+                                        "isForKids": false,
+                                        "isDefaultBludo": true,
+                                        "typeOfDishId": "61bfd660-d91b-11ed-9a9d-0d0baf15e66f",
+                                        "createdAt": "2023-04-12T20:08:26.861Z",
+                                        "placeNumber": 1,
+                                        "typeOfFoodIntakeItemId": "95c14890-d91b-11ed-9a9d-0d0baf15e66f"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "typeOfFoodIntakeId": "f4c9d1a0-d933-11ed-bd2a-61e83120e849",
+                        "typeOfDishItems": [
+                            {
+                                "typeOfDishItemId": "e4631401-d921-11ed-9a9d-0d0baf15e66f",
+                                "dishes": [
+                                    {
+                                        "id": "f3a6c110-d9c5-11ed-ba83-8910dac64dde",
+                                        "name": "Копмот вишнёвый",
+                                        "weight": "200г",
+                                        "protein": 1,
+                                        "fats": 1,
+                                        "carbohydrates": 20,
+                                        "calories": 20,
+                                        "dieta": ["Нет"],
+                                        "isForKids": true,
+                                        "isDefaultBludo": true,
+                                        "typeOfDishId": "e4631401-d921-11ed-9a9d-0d0baf15e66f",
+                                        "createdAt": "2023-04-13T06:39:33.796Z",
+                                        "placeNumber": 1,
+                                        "typeOfFoodIntakeItemId": "f4c9d1a0-d933-11ed-bd2a-61e83120e849"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "typeOfFoodIntakeId": "f72c79c0-d933-11ed-bd2a-61e83120e849",
+                        "typeOfDishItems": [
+                            {
+                                "typeOfDishItemId": "69034601-d91b-11ed-9a9d-0d0baf15e66f",
+                                "dishes": [
+                                    {
+                                        "id": "f18c9d60-d9f6-11ed-b47a-cfcf106d8f3b",
+                                        "name": "Пицца \"Франкфуртская с грибами\"",
+                                        "weight": "400",
+                                        "protein": 20,
+                                        "fats": 20,
+                                        "carbohydrates": 20,
+                                        "calories": 20,
+                                        "dieta": ["Нет"],
+                                        "isForKids": true,
+                                        "isDefaultBludo": false,
+                                        "typeOfDishId": "69034601-d91b-11ed-9a9d-0d0baf15e66f",
+                                        "createdAt": "2023-04-13T12:30:15.608Z",
+                                        "placeNumber": 1,
+                                        "typeOfFoodIntakeItemId": "f72c79c0-d933-11ed-bd2a-61e83120e849"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "targetDate": "2023-04-27T00:00:00.000Z"
+            },
+            "placeNumber": "1"
+        },
+        {
+            "menu": {
+                "typeOfFoodIntakeItems": [
+                    {
+                        "typeOfFoodIntakeId": "95c14890-d91b-11ed-9a9d-0d0baf15e66f",
+                        "typeOfDishItems": [
+                            {
+                                "typeOfDishItemId": "61bfd660-d91b-11ed-9a9d-0d0baf15e66f",
+                                "dishes": [
+                                    {
+                                        "id": "c93352c0-d96d-11ed-a47c-797277349d21",
+                                        "name": "Отбивная из птицы в сухарях",
+                                        "weight": "220г",
+                                        "protein": 20,
+                                        "fats": 20,
+                                        "carbohydrates": 20,
+                                        "calories": 20,
+                                        "dieta": ["Нет"],
+                                        "isForKids": false,
+                                        "isDefaultBludo": true,
+                                        "typeOfDishId": "61bfd660-d91b-11ed-9a9d-0d0baf15e66f",
+                                        "createdAt": "2023-04-12T20:08:26.861Z",
+                                        "placeNumber": 2,
+                                        "typeOfFoodIntakeItemId": "95c14890-d91b-11ed-9a9d-0d0baf15e66f"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "typeOfFoodIntakeId": "f4c9d1a0-d933-11ed-bd2a-61e83120e849",
+                        "typeOfDishItems": [
+                            {
+                                "typeOfDishItemId": "e4631401-d921-11ed-9a9d-0d0baf15e66f",
+                                "dishes": [
+                                    {
+                                        "id": "f3a6c110-d9c5-11ed-ba83-8910dac64dde",
+                                        "name": "Копмот вишнёвый",
+                                        "weight": "200г",
+                                        "protein": 1,
+                                        "fats": 1,
+                                        "carbohydrates": 20,
+                                        "calories": 20,
+                                        "dieta": ["Нет"],
+                                        "isForKids": true,
+                                        "isDefaultBludo": true,
+                                        "typeOfDishId": "e4631401-d921-11ed-9a9d-0d0baf15e66f",
+                                        "createdAt": "2023-04-13T06:39:33.796Z",
+                                        "placeNumber": 2,
+                                        "typeOfFoodIntakeItemId": "f4c9d1a0-d933-11ed-bd2a-61e83120e849"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "typeOfFoodIntakeId": "f72c79c0-d933-11ed-bd2a-61e83120e849",
+                        "typeOfDishItems": [
+                            {
+                                "typeOfDishItemId": "69034601-d91b-11ed-9a9d-0d0baf15e66f",
+                                "dishes": [
+                                    {
+                                        "id": "f18c9d60-d9f6-11ed-b47a-cfcf106d8f3b",
+                                        "name": "Пицца \"Франкфуртская с грибами\"",
+                                        "weight": "400",
+                                        "protein": 20,
+                                        "fats": 20,
+                                        "carbohydrates": 20,
+                                        "calories": 20,
+                                        "dieta": ["Нет"],
+                                        "isForKids": true,
+                                        "isDefaultBludo": false,
+                                        "typeOfDishId": "69034601-d91b-11ed-9a9d-0d0baf15e66f",
+                                        "createdAt": "2023-04-13T12:30:15.608Z",
+                                        "placeNumber": 2,
+                                        "typeOfFoodIntakeItemId": "f72c79c0-d933-11ed-bd2a-61e83120e849"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "targetDate": "2023-04-27T00:00:00.000Z"
+            },
+            "placeNumber": "2"
+        }
+    ],
+    "paging": []
+}

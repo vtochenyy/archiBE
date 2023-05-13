@@ -1,0 +1,32 @@
+[
+  {
+    "menu": {
+      "typeOfFoodIntakeItems": [
+        {
+          "typeOfFoodIntakeItemId": "95c14890-d91b-11ed-9a9d-0d0baf15e66f",
+          "dishes": [
+            "c93352c0-d96d-11ed-a47c-797277349d21",
+            "7e939bb0-d974-11ed-9ed3-8da10d69a99b",
+            "e15be350-d975-11ed-9ed3-8da10d69a99b"
+          ]
+        },
+        {
+          "typeOfFoodIntakeItemId": "f4c9d1a0-d933-11ed-bd2a-61e83120e849",
+          "dishes": [
+            "f3a6c110-d9c5-11ed-ba83-8910dac64dde",
+            "afcc4090-d9da-11ed-9cb4-3991f95b3445",
+            "b7584130-d9f6-11ed-b47a-cfcf106d8f3b"
+          ]
+        },
+        {
+          "typeOfFoodIntakeItemId": "f72c79c0-d933-11ed-bd2a-61e83120e849",
+          "dishes": [
+            "d3e70bb1-d9f6-11ed-b47a-cfcf106d8f3b",
+            "f18c9d60-d9f6-11ed-b47a-cfcf106d8f3b"
+          ]
+        }
+      ]
+    },
+    "placeNumber": 4
+  }
+]
