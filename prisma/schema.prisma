@@ -74,7 +74,7 @@ model DishToMenu {
   TypeOfFoodIntakeId DictionaryTypeOfFoodIntake @relation(fields: [typeOfFoodIntakeId], references: [id])
   Dish               Dish                       @relation(fields: [dishId], references: [id])
 
-  //@@id([menuId, dishId])
+  @@id([menuId, dishId])
 }
 
 model Menu {
