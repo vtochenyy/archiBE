@@ -61,7 +61,7 @@ model DishToGlobalMenu {
   typeOfFoodIntakeId String                     @db.Uuid
   TypeOfFoodIntakeId DictionaryTypeOfFoodIntake @relation(fields: [typeOfFoodIntakeId], references: [id])
 
-  @@id([globalMenuId, dishId])
+  // @@id([globalMenuId, dishId])
 }
 
 model DishToMenu {
