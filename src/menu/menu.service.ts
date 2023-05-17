@@ -236,6 +236,7 @@ export class MenuService {
                     globalMenuId: globalMenuId,
                 })
                 .then((menus) => menus.map((x) => ({ userId: x.userId, tableId: x.tableId })));
+
             const allMenus = await Promise.all(
                 allUserMenusByGlobalMenuId.map(
                     async (x) =>
