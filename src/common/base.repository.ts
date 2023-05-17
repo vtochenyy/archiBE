@@ -30,7 +30,7 @@ export abstract class BaseRepository {
             return { ...x, id: uuidv1() };
         });
         // @ts-ignore
-        return await this.client[this.model].createMany({ data: data, skipDuplicates: true });
+        return await this.client[this.model].createMany({ data: data, skipDuplicates: false });
     }
 
     public async update(recordId: string, params: any): Promise<any> {
