@@ -59,8 +59,13 @@ export class MenuService {
                 .map((y: { typeOfDishId: any; dishes: any[] }) => {
                     let typeOfIDishFinalItem = {
                         typeOfDishItemId: y.typeOfDishId,
-                        dishes: y.dishes.filter((z: { id: any }) =>
-                            x.dishes.find((dish: { dishId: any }) => dish.dishId === z.id)
+                        dishes: y.dishes.filter(
+                            (z: { id: string; typeOfFoodIntakeItemId: string }) =>
+                                x.dishes.find(
+                                    (dish: { dishId: string; typeOfFoodIntakeId: string }) =>
+                                        dish.dishId === z.id &&
+                                        x.typeOfFoodIntakeId === z.typeOfFoodIntakeItemId
+                                )
                         ),
                     };
                     if (!!typeOfIDishFinalItem.dishes.length) {
