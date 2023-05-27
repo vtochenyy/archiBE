@@ -40,6 +40,46 @@ export class MenuService {
         );
     }
 
+    private mapMenuDBModelToJSON_globalMenu(
+        menu: any,
+        allTypesOfDish: any,
+        grouppedByItakesId: any,
+        targetGlobalMenu: any,
+        tableId?: string
+    ) {
+        let grouppedByTypeOfDishIds = allTypesOfDish
+            .map((x: { id: any }) => ({
+                typeOfDishId: x.id,
+                dishes: menu.filter((y: { typeOfDishId: any }) => y.typeOfDishId === x.id),
+            }))
+            .filter((x: { dishes: string | any[] }) => !!x.dishes.length);
+        let finalJSON = grouppedByItakesId.map((x: { typeOfFoodIntakeId: any; dishes: any[] }) => ({
+            typeOfFoodIntakeId: x.typeOfFoodIntakeId,
+            typeOfDishItems: grouppedByTypeOfDishIds
+                .map((y: { typeOfDishId: any; dishes: any[] }) => {
+                    let typeOfIDishFinalItem = {
+                        typeOfDishItemId: y.typeOfDishId,
+                        dishes: y.dishes.filter((z: { id: any }) =>
+                            x.dishes.find((dish: { dishId: any }) => dish.dishId === z.id)
+                        ),
+                    };
+                    if (!!typeOfIDishFinalItem.dishes.length) {
+                        return typeOfIDishFinalItem;
+                    }
+                })
+                .filter((item: any) => !!item),
+        }));
+        const result = {
+            menu: {
+                typeOfFoodIntakeItems: finalJSON,
+                targetDate: targetGlobalMenu.targetDate,
+            },
+        };
+        // @ts-ignore
+        !!tableId && (result.tableId = tableId);
+        return result;
+    }
+
     private mapMenuDBModelToJSON(
         menu: any,
         allTypesOfDish: any,
@@ -53,6 +93,7 @@ export class MenuService {
                 dishes: menu.filter((y: { typeOfDishId: any }) => y.typeOfDishId === x.id),
             }))
             .filter((x: { dishes: string | any[] }) => !!x.dishes.length);
+        this.logger.debug(grouppedByTypeOfDishIds);
         let finalJSON = grouppedByItakesId.map((x: { typeOfFoodIntakeId: any; dishes: any[] }) => ({
             typeOfFoodIntakeId: x.typeOfFoodIntakeId,
             typeOfDishItems: grouppedByTypeOfDishIds
@@ -220,7 +261,7 @@ export class MenuService {
                     typeOfFoodIntakeItemId: dishToGlobalMenuItems.find((y) => y.dishId === x.id)
                         .typeOfFoodIntakeId,
                 }));
-                result = this.mapMenuDBModelToJSON(
+                result = this.mapMenuDBModelToJSON_globalMenu(
                     allHavedDishes,
                     allTypesOfDish,
                     grouppedByItakesId,
@@ -240,8 +281,9 @@ export class MenuService {
                 .findByCriteria({
                     globalMenuId: globalMenuId,
                 })
-                .then((menus) => menus.map((x) => ({ userId: x.userId, tableId: x.tableId })));
-
+                .then((menus) =>
+                    menus.map((x) => ({ userId: x.userId, tableId: x.tableId, menuId: x.id }))
+                );
             const allMenus = await Promise.all(
                 allUserMenusByGlobalMenuId.map(
                     async (x) =>
@@ -259,7 +301,19 @@ export class MenuService {
                         })
                 )
             );
-            return baseAnswer(200, allMenus, []);
+            const allDishesToSmeta = await Promise.all(
+                allUserMenusByGlobalMenuId.flatMap(
+                    async (x) =>
+                        await this.dishToMenuRepository.findByCriteria({ menuId: x.menuId })
+                )
+            ).then((x) => x.flat().map((y) => y.dishId));
+            const allDishesSmetaUniqeIds = new Set(allDishesToSmeta);
+            let countOfDishData = Array.from(allDishesSmetaUniqeIds).map((x) => ({
+                dishId: x,
+                count: allDishesToSmeta.filter((y) => y === x).length,
+            }));
+            this.logger.debug(countOfDishData);
+            return baseAnswer(200, { allMenus: allMenus, dishCountToSmeta: countOfDishData }, []);
         } catch (e) {
             next(new HttpError(500, String(e), 'MenuService'));
         }
