@@ -10,6 +10,7 @@ import { HttpError } from '../errors/http-error.class';
 import { IControllerInteface } from '../common/controller.inteface';
 import { ValidatorMiddlewareService } from '../middlewares/validator/validatorMiddleware.service';
 import { CreateGlobalMenuDtoIn } from './dto/in/createGlobalMenu.dto';
+import { AddDishesToUserMenuByAdminDtoIn } from './dto/in/addDishesToUserMenuByAdmin.dto';
 
 @injectable()
 export class MenuController extends BaseController implements IControllerInteface {
@@ -38,6 +39,18 @@ export class MenuController extends BaseController implements IControllerIntefac
                 path: '/createMenu',
                 method: 'post',
                 func: this.createMenu,
+            },
+            {
+                root: '/menu',
+                path: '/addDishesToUserMenuByAdmin',
+                method: 'post',
+                func: this.addDihsesToUserMenu,
+                middlewares: [
+                    new ValidatorMiddlewareService(
+                        AddDishesToUserMenuByAdminDtoIn,
+                        this.loggerService
+                    ),
+                ],
             },
             {
                 root: '/menu',
@@ -128,6 +141,15 @@ export class MenuController extends BaseController implements IControllerIntefac
     public async getAllGlobalMenus(req: Request, res: Response, next: NextFunction) {
         try {
             const data = await this.menuService.getAllGlobalMenus(next);
+            data && res.status(data.status).send(data);
+        } catch (e) {
+            next(new HttpError(400, 'Bad Request', 'DishController'));
+        }
+    }
+
+    public async addDihsesToUserMenu(req: Request, res: Response, next: NextFunction) {
+        try {
+            const data = await this.menuService.addDishesToUserMenuByAdmin(req.body, next);
             data && res.status(data.status).send(data);
         } catch (e) {
             next(new HttpError(400, 'Bad Request', 'DishController'));

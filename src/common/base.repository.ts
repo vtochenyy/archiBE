@@ -85,4 +85,13 @@ export abstract class BaseRepository {
             return { error: err?.message };
         }
     }
+
+    public async deleteByCriteria(params: any): Promise<any> {
+        try {
+            // @ts-ignore
+            return await this.client[this.model].delete({ where: { ...params } });
+        } catch (err: any) {
+            return { error: err?.message };
+        }
+    }
 }

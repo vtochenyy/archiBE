@@ -93,7 +93,6 @@ export class MenuService {
                 dishes: menu.filter((y: { typeOfDishId: any }) => y.typeOfDishId === x.id),
             }))
             .filter((x: { dishes: string | any[] }) => !!x.dishes.length);
-        this.logger.debug(grouppedByTypeOfDishIds);
         let finalJSON = grouppedByItakesId.map((x: { typeOfFoodIntakeId: any; dishes: any[] }) => ({
             typeOfFoodIntakeId: x.typeOfFoodIntakeId,
             typeOfDishItems: grouppedByTypeOfDishIds
@@ -312,7 +311,6 @@ export class MenuService {
                 dishId: x,
                 count: allDishesToSmeta.filter((y) => y === x).length,
             }));
-            this.logger.debug(countOfDishData);
             return baseAnswer(200, { allMenus: allMenus, dishCountToSmeta: countOfDishData }, []);
         } catch (e) {
             next(new HttpError(500, String(e), 'MenuService'));
@@ -396,6 +394,36 @@ export class MenuService {
                 }
             });
             return baseAnswer(200, result, []);
+        } catch (e) {
+            next(new HttpError(500, String(e), 'MenuService'));
+        }
+    }
+
+    public async addDishesToUserMenuByAdmin(params: any, next: NextFunction) {
+        try {
+            let menuId = '';
+            const targetUserMenusIds = await this.menuRepository
+                .findByCriteria({
+                    globalMenuId: params.globalMenuId,
+                    tableId: params.tableId,
+                })
+                .then((x) => x.map((y) => y.id));
+            const targetDishToMenuRecs = await this.dishToMenuRepository.findByCriteria({
+                menuId: { in: targetUserMenusIds },
+                typeOfFoodIntakeId: params.typeOfFoodIntakeId,
+                placeNumber: params.placeNumber,
+            });
+            menuId = targetDishToMenuRecs[0].menuId;
+            this.logger.debug(targetDishToMenuRecs);
+            let createdRecs = await this.dishToMenuRepository.createMany(
+                params.data.map((x: any) => ({
+                    dishId: x.dishId,
+                    placeNumber: +x.placeNumber,
+                    typeOfFoodIntakeId: x.typeOfFoodIntakeId,
+                    menuId: menuId,
+                }))
+            );
+            return baseAnswer(201, createdRecs, []);
         } catch (e) {
             next(new HttpError(500, String(e), 'MenuService'));
         }

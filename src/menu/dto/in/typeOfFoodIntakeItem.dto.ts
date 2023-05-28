@@ -1,5 +1,4 @@
-import {IsArray, IsNotEmpty, IsString} from "class-validator";
-import {TypeOfDishItemDto} from "./typeOfDishItem.dto";
+import { IsArray, IsNotEmpty, IsString } from 'class-validator';
 
 export class TypeOfFoodIntakeItemDto {
     @IsString()
@@ -8,5 +7,5 @@ export class TypeOfFoodIntakeItemDto {
 
     @IsArray()
     @IsNotEmpty()
-    dishes: string[]
+    dishes: string[];
 }
